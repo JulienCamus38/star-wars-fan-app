@@ -1,0 +1,153 @@
+<div class="accordion" id="accordionExample">
+
+    <!-- FILMS -->
+    <div class="card">
+        <div class="card-header" id="headingFilms">
+            <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFilms"
+                    aria-expanded="true" aria-controls="collapseFilms">
+                    Films
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapseFilms" class="collapse show" aria-labelledby="headingFilms" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="list-group">
+                    <ng-container *ngFor="let film of films">
+                        <!-- add icon -->
+                        <a href="#" class="list-group-item list-group-item-action">
+                            {{ film.title }}
+                        </a>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PEOPLE -->
+    <div class="card">
+        <div class="card-header" id="headingPeople">
+            <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse"
+                    data-target="#collapsePeople" aria-expanded="true" aria-controls="collapsePeople">
+                    People
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapsePeople" class="collapse show" aria-labelledby="headingPeople" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="list-group">
+                    <ng-container *ngFor="let p of people">
+                        <!-- add icon -->
+                        <a href="#" class="list-group-item list-group-item-action">
+                            {{ p.name }}
+                        </a>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PLANETS -->
+    <div class="card">
+        <div class="card-header" id="headingPlanets">
+            <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse"
+                    data-target="#collapsePlanets" aria-expanded="true" aria-controls="collapsePlanets">
+                    Planets
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapsePlanets" class="collapse show" aria-labelledby="headingPlanets" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="list-group">
+                    <ng-container *ngFor="let planet of planets">
+                        <!-- add icon -->
+                        <a href="#" class="list-group-item list-group-item-action">
+                            {{ planet.name }}
+                        </a>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SPECIES -->
+    <div class="card">
+        <div class="card-header" id="headingSpecies">
+            <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse"
+                    data-target="#collapseSpecies" aria-expanded="true" aria-controls="collapseSpecies">
+                    Species
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapseSpecies" class="collapse show" aria-labelledby="headingSpecies" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="list-group">
+                    <ng-container *ngFor="let s of species">
+                        <!-- add icon -->
+                        <a href="#" class="list-group-item list-group-item-action">
+                            {{ s.name }}
+                        </a>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STARSHIPS -->
+    <div class="card">
+        <div class="card-header" id="headingStarships">
+            <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse"
+                    data-target="#collapseStarships" aria-expanded="true" aria-controls="collapseStarships">
+                    Starships
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapseStarships" class="collapse show" aria-labelledby="headingStarships" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="list-group">
+                    <ng-container *ngFor="let starship of starships">
+                        <!-- add icon -->
+                        <a href="#" class="list-group-item list-group-item-action">
+                            {{ starship.name }}
+                        </a>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VEHICLES -->
+    <div class="card">
+        <div class="card-header" id="headingVehicles">
+            <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse"
+                    data-target="#collapseVehicles" aria-expanded="true" aria-controls="collapseVehicles">
+                    Vehicles
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapseVehicles" class="collapse show" aria-labelledby="headingVehicles" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="list-group">
+                    <ng-container *ngFor="let vehicle of vehicles">
+                        <!-- add icon -->
+                        <a href="#" class="list-group-item list-group-item-action">
+                            {{ vehicle.name }}
+                        </a>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*
+html, body {
+    height:100%;
+    margin:0;
+    padding:0;
+}
+
+body {
+    background-image:url(./assets/images/background.jpg);
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    min-height:100vh;
+    font-family:'Roboto', sans-serif;
+}
+*/
