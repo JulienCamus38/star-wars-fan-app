@@ -1,0 +1,10 @@
+<h1>Hi {{ currentUser.firstName }}!</h1>
+<h3>All registered users:</h3>
+<ul>
+    <li *ngFor="let user of users">
+        {{ user.username }} ({{ user.firstName }} {{ user.lastName }})
+        <span *ngIf="user.id==currentUser.id">
+        - <a (click)="deleteUser(user.id)" class="text-danger">Delete my account</a>
+        </span>
+    </li>
+</ul>
