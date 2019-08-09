@@ -1,3 +1,9 @@
+<div class="form-group has-search">
+    <span class="fa fa-search form-control-feedback"></span>
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+        placeholder="Start searching for a resource">
+</div>
+
 <div class="accordion" id="accordionExample">
 
     <!-- FILMS -->
@@ -6,16 +12,16 @@
             <h5 class="mb-0">
                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFilms"
                     aria-expanded="true" aria-controls="collapseFilms">
+                    <span class="fa fa-film"></span>
                     Films
                 </button>
             </h5>
         </div>
 
-        <div id="collapseFilms" class="collapse show" aria-labelledby="headingFilms" data-parent="#accordionExample">
+        <div id="collapseFilms" class="collapse" aria-labelledby="headingFilms" data-parent="#accordionExample">
             <div class="card-body">
                 <div class="list-group">
-                    <ng-container *ngFor="let film of films">
-                        <!-- add icon -->
+                    <ng-container *ngFor="let film of films | searchFilter: searchText">
                         <a href="#" class="list-group-item list-group-item-action">
                             {{ film.title }}
                         </a>
@@ -29,18 +35,18 @@
     <div class="card">
         <div class="card-header" id="headingPeople">
             <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse"
-                    data-target="#collapsePeople" aria-expanded="true" aria-controls="collapsePeople">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsePeople"
+                    aria-expanded="false" aria-controls="collapsePeople">
+                    <span class="fa fa-user"></span>
                     People
                 </button>
             </h5>
         </div>
 
-        <div id="collapsePeople" class="collapse show" aria-labelledby="headingPeople" data-parent="#accordionExample">
+        <div id="collapsePeople" class="collapse" aria-labelledby="headingPeople" data-parent="#accordionExample">
             <div class="card-body">
                 <div class="list-group">
-                    <ng-container *ngFor="let p of people">
-                        <!-- add icon -->
+                    <ng-container *ngFor="let p of people | searchFilter: searchText">
                         <a href="#" class="list-group-item list-group-item-action">
                             {{ p.name }}
                         </a>
@@ -54,17 +60,18 @@
     <div class="card">
         <div class="card-header" id="headingPlanets">
             <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse"
-                    data-target="#collapsePlanets" aria-expanded="true" aria-controls="collapsePlanets">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsePlanets"
+                    aria-expanded="false" aria-controls="collapsePlanets">
+                    <span class="fa fa-globe"></span>
                     Planets
                 </button>
             </h5>
         </div>
 
-        <div id="collapsePlanets" class="collapse show" aria-labelledby="headingPlanets" data-parent="#accordionExample">
+        <div id="collapsePlanets" class="collapse" aria-labelledby="headingPlanets" data-parent="#accordionExample">
             <div class="card-body">
                 <div class="list-group">
-                    <ng-container *ngFor="let planet of planets">
+                    <ng-container *ngFor="let planet of planets | searchFilter: searchText">
                         <!-- add icon -->
                         <a href="#" class="list-group-item list-group-item-action">
                             {{ planet.name }}
@@ -79,17 +86,18 @@
     <div class="card">
         <div class="card-header" id="headingSpecies">
             <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse"
-                    data-target="#collapseSpecies" aria-expanded="true" aria-controls="collapseSpecies">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSpecies"
+                    aria-expanded="false" aria-controls="collapseSpecies">
+                    <span class="fa fa-reddit"></span>
                     Species
                 </button>
             </h5>
         </div>
 
-        <div id="collapseSpecies" class="collapse show" aria-labelledby="headingSpecies" data-parent="#accordionExample">
+        <div id="collapseSpecies" class="collapse" aria-labelledby="headingSpecies" data-parent="#accordionExample">
             <div class="card-body">
                 <div class="list-group">
-                    <ng-container *ngFor="let s of species">
+                    <ng-container *ngFor="let s of species | searchFilter: searchText">
                         <!-- add icon -->
                         <a href="#" class="list-group-item list-group-item-action">
                             {{ s.name }}
@@ -104,18 +112,18 @@
     <div class="card">
         <div class="card-header" id="headingStarships">
             <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse"
-                    data-target="#collapseStarships" aria-expanded="true" aria-controls="collapseStarships">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseStarships"
+                    aria-expanded="false" aria-controls="collapseStarships">
+                    <span class="fa fa-space-shuttle"></span>
                     Starships
                 </button>
             </h5>
         </div>
 
-        <div id="collapseStarships" class="collapse show" aria-labelledby="headingStarships" data-parent="#accordionExample">
+        <div id="collapseStarships" class="collapse" aria-labelledby="headingStarships" data-parent="#accordionExample">
             <div class="card-body">
                 <div class="list-group">
-                    <ng-container *ngFor="let starship of starships">
-                        <!-- add icon -->
+                    <ng-container *ngFor="let starship of starships | searchFilter: searchText">
                         <a href="#" class="list-group-item list-group-item-action">
                             {{ starship.name }}
                         </a>
@@ -129,18 +137,18 @@
     <div class="card">
         <div class="card-header" id="headingVehicles">
             <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse"
-                    data-target="#collapseVehicles" aria-expanded="true" aria-controls="collapseVehicles">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseVehicles"
+                    aria-expanded="false" aria-controls="collapseVehicles">
+                    <span class="fa fa-car"></span>
                     Vehicles
                 </button>
             </h5>
         </div>
 
-        <div id="collapseVehicles" class="collapse show" aria-labelledby="headingVehicles" data-parent="#accordionExample">
+        <div id="collapseVehicles" class="collapse" aria-labelledby="headingVehicles" data-parent="#accordionExample">
             <div class="card-body">
                 <div class="list-group">
-                    <ng-container *ngFor="let vehicle of vehicles">
-                        <!-- add icon -->
+                    <ng-container *ngFor="let vehicle of vehicles | searchFilter: searchText">
                         <a href="#" class="list-group-item list-group-item-action">
                             {{ vehicle.name }}
                         </a>

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
@@ -14,13 +15,15 @@ import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { AlertComponent } from './_components';
 import { ResourceListComponent } from './resource-list';
+import { SearchFilterPipe } from './_pipes/search-filter.pipe';
 
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        appRoutingModule
+        appRoutingModule,
+        FormsModule
     ],
     declarations: [
         AppComponent,
@@ -28,7 +31,8 @@ import { ResourceListComponent } from './resource-list';
         LoginComponent,
         RegisterComponent,
         AlertComponent,
-        ResourceListComponent
+        ResourceListComponent,
+        SearchFilterPipe
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

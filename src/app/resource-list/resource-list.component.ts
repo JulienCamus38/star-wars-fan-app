@@ -9,6 +9,8 @@ import { Species } from './../_models/species';
 import { Starship } from './../_models/starship';
 import { Vehicle } from './../_models/vehicle';
 
+import { SearchFilterPipe } from './../_pipes/search-filter.pipe';
+
 @Component({
     selector: 'app-resource-list',
     templateUrl: './resource-list.component.html',
@@ -23,6 +25,8 @@ export class ResourceListComponent implements OnInit {
     starships: Starship[];
     vehicles: Vehicle[];
 
+    searchText;
+
     constructor(private resourceService: ResourceService) { }
 
     ngOnInit() {
@@ -32,6 +36,7 @@ export class ResourceListComponent implements OnInit {
         this.getSpecies();
         this.getStarships();
         this.getVehicles();
+
     }
 
     public getFilms(): void {
