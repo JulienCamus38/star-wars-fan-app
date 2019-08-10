@@ -9,7 +9,7 @@ import { Species } from './../_models/species';
 import { Starship } from './../_models/starship';
 import { Vehicle } from './../_models/vehicle';
 
-import { SearchFilterPipe } from './../_pipes/search-filter.pipe';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-resource-list',
@@ -27,7 +27,7 @@ export class ResourceListComponent implements OnInit {
 
     searchText;
 
-    constructor(private resourceService: ResourceService) { }
+    constructor(private resourceService: ResourceService, private router: Router) { }
 
     ngOnInit() {
         this.getFilms();
@@ -36,7 +36,6 @@ export class ResourceListComponent implements OnInit {
         this.getSpecies();
         this.getStarships();
         this.getVehicles();
-
     }
 
     public getFilms(): void {
@@ -73,6 +72,13 @@ export class ResourceListComponent implements OnInit {
         this.resourceService.getVehicles().subscribe(
             vehicles => this.vehicles = vehicles
         );
+    }
+
+    public showResource(resource: any) {
+        const url = resource.url.split('/');
+        const category = url[url.length - 3];
+        const id = url[url.length - 2];
+        this.router.navigate(['/details', category, id]);
     }
 
 }

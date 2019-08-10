@@ -1,0 +1,25 @@
+<button class="btn btn-link" type="button" onclick="history.back()">
+    <span class="fa fa-arrow-left"></span>
+    Go back to last page
+</button>
+
+<!--<ng-container *ngIf="resource else loading">-->
+    <div [ngSwitch]="resourceCategory">
+        <app-film *ngSwitchCase="'films'" [film]="resource" [characters]="people"></app-film>
+        <app-people *ngSwitchCase="'people'" [people]="resource"></app-people>
+        <app-planet *ngSwitchCase="'planets'" [planet]="resource"></app-planet>
+        <app-species *ngSwitchCase="'species'" [species]="resource"></app-species>
+        <app-starship *ngSwitchCase="'starships'" [starship]="resource"></app-starship>
+        <app-vehicle *ngSwitchCase="'vehicles'" [vehicle]="resource"></app-vehicle>
+        <div *ngSwitchDefault>
+            The requested category "{{ resourceCategory }}" is not supported!
+        </div>
+    </div>
+<!--</ng-container>
+
+<ng-template #loading>
+    <div>
+        <span class="fa fa-spinner fa-1g fa-spin"></span>
+        Fetching data...
+    </div>
+</ng-template>-->

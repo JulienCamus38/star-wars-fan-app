@@ -4,6 +4,7 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { ResourceListComponent } from './resource-list';
+import { ResourceDetailsComponent } from './resource-details';
 import { AuthGuard } from './_helpers';
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'list', component: ResourceListComponent },
+    { path: 'details/:category/:id', component: ResourceDetailsComponent },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

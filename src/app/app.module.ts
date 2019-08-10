@@ -16,6 +16,13 @@ import { RegisterComponent } from './register';
 import { AlertComponent } from './_components';
 import { ResourceListComponent } from './resource-list';
 import { SearchFilterPipe } from './_pipes/search-filter.pipe';
+import { ResourceDetailsComponent } from './resource-details/resource-details.component';
+import { FilmComponent } from './_details/film/film.component';
+import { PeopleComponent } from './_details/people/people.component';
+import { PlanetComponent } from './_details/planet/planet.component';
+import { SpeciesComponent } from './_details/species/species.component';
+import { StarshipComponent } from './_details/starship/starship.component';
+import { VehicleComponent } from './_details/vehicle/vehicle.component';
 
 @NgModule({
     imports: [
@@ -32,7 +39,14 @@ import { SearchFilterPipe } from './_pipes/search-filter.pipe';
         RegisterComponent,
         AlertComponent,
         ResourceListComponent,
-        SearchFilterPipe
+        SearchFilterPipe,
+        ResourceDetailsComponent,
+        FilmComponent,
+        PeopleComponent,
+        PlanetComponent,
+        SpeciesComponent,
+        StarshipComponent,
+        VehicleComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

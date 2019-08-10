@@ -16,10 +16,3 @@ export interface People {
     url: string;
     vehicles: any[];
 }
-
-export interface SwapiResponse<T> {
-    count: number;
-    next: string;
-    previous: string;
-    results: T[];
-}

@@ -1,0 +1,48 @@
+<button (click)="log()">Debug</button>
+
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <th>Title</th>
+            <td>{{ film.title }}</td>
+        </tr>
+        <tr>
+            <th>Director</th>
+            <td>{{ film.director }}</td>
+        </tr>
+        <tr>
+            <th>Producer</th>
+            <td>{{ film.producer }}</td>
+        </tr>
+        <tr>
+            <th>Episode ID</th>
+            <td>{{ film.episode_id }}</td>
+        </tr>
+        <tr>
+            <th>Opening Crawl</th>
+            <td>{{ film.opening_crawl }}</td>
+        </tr>
+        <tr>
+            <th>Release Date</th>
+            <td>{{ film.release_date | date : "dd/MM/y" }}</td>
+        </tr>
+        <tr>
+            <th>Created</th>
+            <td>{{ film.created | date : "dd/MM/y HH:mm:ss" }}</td>
+        </tr>
+        <tr>
+            <th>Edited</th>
+            <td>{{ film.edited | date : "dd/MM/y HH:mm:ss" }}</td>
+        </tr>
+        <tr>
+            <th>Characters</th>
+            <div class="list-group">
+                <ng-container *ngFor="let character of characters">
+                    <td class="list-group-item list-group-item-action">
+                        {{ character.name }}
+                    </td>
+                </ng-container>
+            </div>
+        </tr>
+    </tbody>
+</table>

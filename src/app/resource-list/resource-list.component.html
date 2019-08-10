@@ -1,3 +1,5 @@
+<!--TODO: add a loading component before rendering -->
+
 <div class="form-group has-search">
     <span class="fa fa-search form-control-feedback"></span>
     <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
@@ -22,7 +24,7 @@
             <div class="card-body">
                 <div class="list-group">
                     <ng-container *ngFor="let film of films | searchFilter: searchText">
-                        <a href="#" class="list-group-item list-group-item-action">
+                        <a (click)="showResource(film)" class="list-group-item list-group-item-action">
                             {{ film.title }}
                         </a>
                     </ng-container>
@@ -47,7 +49,7 @@
             <div class="card-body">
                 <div class="list-group">
                     <ng-container *ngFor="let p of people | searchFilter: searchText">
-                        <a href="#" class="list-group-item list-group-item-action">
+                        <a (click)="showResource(p)" class="list-group-item list-group-item-action">
                             {{ p.name }}
                         </a>
                     </ng-container>
@@ -72,8 +74,7 @@
             <div class="card-body">
                 <div class="list-group">
                     <ng-container *ngFor="let planet of planets | searchFilter: searchText">
-                        <!-- add icon -->
-                        <a href="#" class="list-group-item list-group-item-action">
+                        <a  (click)="showResource(planet)" class="list-group-item list-group-item-action">
                             {{ planet.name }}
                         </a>
                     </ng-container>
@@ -98,8 +99,7 @@
             <div class="card-body">
                 <div class="list-group">
                     <ng-container *ngFor="let s of species | searchFilter: searchText">
-                        <!-- add icon -->
-                        <a href="#" class="list-group-item list-group-item-action">
+                        <a  (click)="showResource(s)" class="list-group-item list-group-item-action">
                             {{ s.name }}
                         </a>
                     </ng-container>
@@ -124,7 +124,7 @@
             <div class="card-body">
                 <div class="list-group">
                     <ng-container *ngFor="let starship of starships | searchFilter: searchText">
-                        <a href="#" class="list-group-item list-group-item-action">
+                        <a (click)="showResource(starship)" class="list-group-item list-group-item-action">
                             {{ starship.name }}
                         </a>
                     </ng-container>
@@ -149,7 +149,7 @@
             <div class="card-body">
                 <div class="list-group">
                     <ng-container *ngFor="let vehicle of vehicles | searchFilter: searchText">
-                        <a href="#" class="list-group-item list-group-item-action">
+                        <a (click)="showResource(vehicle)" class="list-group-item list-group-item-action">
                             {{ vehicle.name }}
                         </a>
                     </ng-container>
