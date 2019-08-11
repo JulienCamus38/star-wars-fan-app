@@ -35,10 +35,10 @@
         <tr>
             <th>Characters</th>
             <div class="list-group">
-                <ng-container *ngFor="let character of characters | async">
-                    <td class="list-group-item-action" (click)="showResource(p)">
+                <ng-container *ngFor="let c of characters | async">
+                    <td class="list-group-item-action" (click)="showResource(c)">
                         <span class="fa fa-user"></span>
-                        {{ character.name }}
+                        {{ c.name }}
                     </td>
                 </ng-container>
             </div>

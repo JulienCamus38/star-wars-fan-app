@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
-import { catchError, map, concatMap, publishReplay } from 'rxjs/operators';
+import { catchError, map, concatMap, publishReplay, refCount } from 'rxjs/operators';
 
 import { Film } from './../_models/film';
 import { People } from './../_models/people';
@@ -53,7 +53,13 @@ export class ResourceService {
     * @returns { Observable<T[]> }
     */
     private getDomainObjects<T>(url: string): Observable<T[]> {
-        return this.getApiPage<T>(url);
+        return this.getApiPage<T>(url)
+        .pipe(
+            publishReplay(1)
+        )
+        .pipe(
+            refCount()
+        );
     }
 
     /**
