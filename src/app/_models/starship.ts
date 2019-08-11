@@ -1,5 +1,5 @@
 export interface Starship {
-    mglt: string;
+    MGLT: string;
     cargo_capacity: number;
     consumables: string;
     cost_in_credits: number;
@@ -9,7 +9,7 @@ export interface Starship {
     hyperdrive_rating: number;
     length: number;
     manufacturer: string;
-    max_atmosphere_speed: string;
+    max_atmosphering_speed: string;
     model: string; // search field
     name: string; // search field
     passengers: number;

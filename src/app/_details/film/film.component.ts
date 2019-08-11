@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
+
+import { ResourceService } from './../../_services/resource.service';
 
 import { Film } from 'src/app/_models/film';
 import { People } from 'src/app/_models/people';
@@ -17,28 +18,25 @@ import { Vehicle } from 'src/app/_models/vehicle';
 export class FilmComponent implements OnInit {
 
     @Input() film: Film;
-    @Input() characters: Observable<People[]>;
-    //@Input() planets: Observable<Planet[]>;
-    //@Input() species: Observable<Species[]>;
-    //@Input() starships: Observable<Starship[]>;
-    //@Input() vehicles: Observable<Vehicle[]>;
 
-    constructor(private router: Router) {
+    characters: Observable<People[]>;
+    planets: Observable<Planet[]>;
+    species: Observable<Species[]>;
+    starships: Observable<Starship[]>;
+    vehicles: Observable<Vehicle[]>;
+
+    constructor(private resourceService: ResourceService) {
     }
 
     ngOnInit() {
+        this.characters = this.resourceService.getCharactersOfResource(this.film);
+        this.planets = this.resourceService.getPlanetsOfResource(this.film);
+        this.species = this.resourceService.getSpeciesOfResource(this.film);
+        this.starships = this.resourceService.getStarshipsOfResource(this.film);
+        this.vehicles = this.resourceService.getVehiclesOfResource(this.film);
     }
 
-    private showResource(resource: any) {
-        const url = resource.url.split('/');
-        const category = url[url.length - 3];
-        const id = url[url.length - 2];
-        this.router.navigate(['/details', category, id]);
+    showResource(resource: any) {
+        this.resourceService.showResource(resource);
     }
-
-    log() {
-        console.log(this.film);
-        console.log(this.characters);
-    }
-
 }

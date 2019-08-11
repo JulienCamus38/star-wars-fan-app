@@ -1,1 +1,81 @@
-<p>species works!</p>
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <th>Name</th>
+            <td>{{ species.name }}</td>
+        </tr>
+        <tr>
+            <th>Designation</th>
+            <td>{{ species.designation }}</td>
+        </tr>
+        <tr>
+            <th>Classification</th>
+            <td>{{ species.classification }}</td>
+        </tr>
+        <tr>
+            <th>Language</th>
+            <td>{{ species.language }}</td>
+        </tr>
+        <tr>
+            <th>Average height</th>
+            <td>{{ species.average_height }} centimeters</td>
+        </tr>
+        <tr>
+            <th>Average lifespan</th>
+            <td>{{ species.average_lifespan }} years</td>
+        </tr>
+        <tr>
+            <th>Eye colors</th>
+            <td>{{ species.eye_colors }}</td>
+        </tr>
+        <tr>
+            <th>Hair colors</th>
+            <td>{{ species.hair_colors }}</td>
+        </tr>
+        <tr>
+            <th>Skin colors</th>
+            <td>{{ species.skin_colors }}</td>
+        </tr>
+        <tr>
+            <th>Homeworld</th>
+            <div class="list-group">
+                <ng-container *ngFor="let h of homeworld | async">
+                    <td class="list-group-item-action" (click)="showResource(h)">
+                        <span class="fa fa-globe"></span>
+                        {{ h.name }}
+                    </td>
+                </ng-container>
+            </div>
+        </tr>
+        <tr>
+            <th>Created</th>
+            <td>{{ species.created | date : "dd/MM/y HH:mm:ss" }}</td>
+        </tr>
+        <tr>
+            <th>Edited</th>
+            <td>{{ species.edited | date : "dd/MM/y HH:mm:ss" }}</td>
+        </tr>
+        <tr>
+            <th>Films</th>
+            <div class="list-group">
+                <ng-container *ngFor="let f of films | async">
+                    <td class="list-group-item-action" (click)="showResource(f)">
+                        <span class="fa fa-film"></span>
+                        {{ f.title }}
+                    </td>
+                </ng-container>
+            </div>
+        </tr>
+        <tr>
+            <th>People</th>
+            <div class="list-group">
+                <ng-container *ngFor="let p of people | async">
+                    <td class="list-group-item-action" (click)="showResource(p)">
+                        <span class="fa fa-user"></span>
+                        {{ p.name }}
+                    </td>
+                </ng-container>
+            </div>
+        </tr>
+    </tbody>
+</table>

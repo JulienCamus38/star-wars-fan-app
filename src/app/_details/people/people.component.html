@@ -1,1 +1,109 @@
-<p>people works!</p>
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <th>Name</th>
+            <td>{{ people.name }}</td>
+        </tr>
+        <tr>
+            <th>Homeworld</th>
+            <div class="list-group">
+                <ng-container *ngFor="let h of homeworld | async">
+                    <td class="list-group-item-action" (click)="showResource(h)">
+                        <span class="fa fa-globe"></span>
+                        {{ h.name }}
+                    </td>
+                </ng-container>
+            </div>
+        </tr>
+        <tr>
+            <th>Birth year</th>
+            <td>{{ people.birth_year }}</td> <!-- TODO: translate -->
+        </tr>
+        <tr>
+            <th>Height</th>
+            <td>{{ people.height }} cm</td>
+        </tr>
+        <tr>
+            <th>Mass</th>
+            <td>{{ people.mass }} kg</td>
+        </tr>
+        <tr>
+            <th>Gender</th>
+            <td>{{ people.gender }}</td>
+        </tr>
+        <tr>
+            <th>Eye color</th>
+            <td>{{ people.eye_color }}</td>
+        </tr>
+        <tr>
+            <th>Hair color</th>
+            <td>{{ people.hair_color }}</td>
+        </tr>
+        <tr>
+            <th>Created</th>
+            <td>{{ people.created | date : "dd/MM/y HH:mm:ss" }}</td>
+        </tr>
+        <tr>
+            <th>Edited</th>
+            <td>{{ people.edited | date : "dd/MM/y HH:mm:ss" }}</td>
+        </tr>
+        <tr>
+            <th>Films</th>
+            <div class="list-group">
+                <ng-container *ngFor="let f of films | async">
+                    <td class="list-group-item-action" (click)="showResource(f)">
+                        <span class="fa fa-film"></span>
+                        {{ f.title }}
+                    </td>
+                </ng-container>
+            </div>
+        </tr>
+        <tr>
+            <th>Species</th>
+            <div class="list-group">
+                <ng-container *ngFor="let s of species | async">
+                    <td class="list-group-item-action" (click)="showResource(s)">
+                        <span class="fa fa-reddit"></span>
+                        {{ s.name }}
+                    </td>
+                </ng-container>
+            </div>
+        </tr>
+        <tr>
+            <th>Starships</th>
+            <div class="list-group">
+                <ng-container *ngIf="(starships | async)?.length; else noStarship">
+                    <ng-container *ngFor="let s of starships | async">
+                        <td class="list-group-item-action" (click)="showResource(s)">
+                            <span class="fa fa-space-shuttle"></span>
+                            {{ s.name }}
+                        </td>
+                    </ng-container>
+                </ng-container>
+                <ng-template #noStarship>
+                    <td class="font-italic">
+                        No starship
+                    </td>
+                </ng-template>
+            </div>
+        </tr>
+        <tr>
+            <th>Vehicles</th>
+            <div class="list-group">
+                <ng-container *ngIf="(vehicles | async)?.length; else noVehicle">
+                    <ng-container *ngFor="let v of vehicles | async">
+                        <td class="list-group-item-action" (click)="showResource(v)">
+                            <span class="fa fa-car"></span>
+                            {{ v.name }}
+                        </td>
+                    </ng-container>
+                </ng-container>
+                <ng-template #noVehicle>
+                    <td class="font-italic">
+                        No vehicle
+                    </td>
+                </ng-template>
+            </div>
+        </tr>
+    </tbody>
+</table>

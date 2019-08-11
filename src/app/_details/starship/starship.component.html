@@ -1,1 +1,93 @@
-<p>starship works!</p>
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <th>Name</th>
+            <td>{{ starship.name }}</td>
+        </tr>
+        <tr>
+            <th>Model</th>
+            <td>{{ starship.model }}</td>
+        </tr>
+        <tr>
+            <th>Passengers</th>
+            <td>{{ starship.passengers }} people</td>
+        </tr>
+        <tr>
+            <th>Max atmosphering speed</th>
+            <td>{{ starship.max_atmosphering_speed }}</td>
+        </tr>
+        <tr>
+            <th>Manufacturer</th>
+            <td>{{ starship.manufacturer }}</td>
+        </tr>
+        <tr>
+            <th>Starship class</th>
+            <td>{{ starship.starship_class }}</td>
+        </tr>
+        <tr>
+            <th>Length</th>
+            <td>{{ starship.length }} meters</td>
+        </tr>
+        <tr>
+            <th>Hyperdrive rating</th>
+            <td>{{ starship.hyperdrive_rating }}</td>
+        </tr>
+        <tr>
+            <th>Crew</th>
+            <td>{{ starship.crew }} people</td>
+        </tr>
+        <tr>
+            <th>Cost</th>
+            <td>{{ starship.cost_in_credits }} galactic credits</td>
+        </tr>
+        <tr>
+            <th>Consumables</th>
+            <td>Enough for {{ starship.consumables }} for the entire crew without having to resupply</td>
+        </tr>
+        <tr>
+            <th>Cargo capacity</th>
+            <td>{{ starship.cargo_capacity }} kilograms</td>
+        </tr>
+        <tr>
+            <th>Maximum number of Megalights this starship can travel in a standard hour</th>
+            <td>{{ starship.MGLT }}</td>
+        </tr>
+        <tr>
+            <th>Created</th>
+            <td>{{ starship.created | date : "dd/MM/y HH:mm:ss" }}</td>
+        </tr>
+        <tr>
+            <th>Edited</th>
+            <td>{{ starship.edited | date : "dd/MM/y HH:mm:ss" }}</td>
+        </tr>
+        <tr>
+            <th>Films</th>
+            <div class="list-group">
+                <ng-container *ngFor="let f of films | async">
+                    <td class="list-group-item-action" (click)="showResource(f)">
+                        <span class="fa fa-film"></span>
+                        {{ f.title }}
+                    </td>
+                </ng-container>
+            </div>
+        </tr>
+        <tr>
+            <th>Pilots</th>
+            <div class="list-group">
+                <ng-container *ngIf="(pilots | async)?.length; else noPilot">
+                    <ng-container *ngFor="let p of pilots | async">
+                        <td class="list-group-item-action" (click)="showResource(p)">
+                            <span class="fa fa-user"></span>
+                            {{ p.name }}
+                        </td>
+                    </ng-container>
+                </ng-container>
+                <ng-template #noPilot>
+                    <td class="font-italic">
+                        No pilot
+                    </td>
+                </ng-template>
+            </div>
+        </tr>
+    </tbody>
+</table>

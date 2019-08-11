@@ -13,3 +13,11 @@
     pointer-events: none;
     color: #aaa;
 }
+
+[data-toggle="collapse"] .right.fa:before {   
+    content: "\f078"; /* v */
+}
+  
+[data-toggle="collapse"].collapsed .right.fa:before {
+    content: "\f054"; /* > */
+}

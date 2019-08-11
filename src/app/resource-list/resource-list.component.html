@@ -12,11 +12,13 @@
     <div class="card">
         <div class="card-header" id="headingFilms">
             <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFilms"
-                    aria-expanded="true" aria-controls="collapseFilms">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFilms"
+                    aria-expanded="false" aria-controls="collapseFilms">
                     <span class="fa fa-film"></span>
                     Films
+                    <i class="fa right" aria-hidden="true"></i>
                 </button>
+
             </h5>
         </div>
 
@@ -37,10 +39,11 @@
     <div class="card">
         <div class="card-header" id="headingPeople">
             <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsePeople"
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsePeople"
                     aria-expanded="false" aria-controls="collapsePeople">
                     <span class="fa fa-user"></span>
                     People
+                    <i class="fa right" aria-hidden="true"></i>
                 </button>
             </h5>
         </div>
@@ -62,10 +65,11 @@
     <div class="card">
         <div class="card-header" id="headingPlanets">
             <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsePlanets"
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsePlanets"
                     aria-expanded="false" aria-controls="collapsePlanets">
                     <span class="fa fa-globe"></span>
                     Planets
+                    <i class="fa right" aria-hidden="true"></i>
                 </button>
             </h5>
         </div>
@@ -74,7 +78,7 @@
             <div class="card-body">
                 <div class="list-group">
                     <ng-container *ngFor="let planet of planets | searchFilter: searchText">
-                        <a  (click)="showResource(planet)" class="list-group-item list-group-item-action">
+                        <a (click)="showResource(planet)" class="list-group-item list-group-item-action">
                             {{ planet.name }}
                         </a>
                     </ng-container>
@@ -87,10 +91,11 @@
     <div class="card">
         <div class="card-header" id="headingSpecies">
             <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSpecies"
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSpecies"
                     aria-expanded="false" aria-controls="collapseSpecies">
                     <span class="fa fa-reddit"></span>
                     Species
+                    <i class="fa right" aria-hidden="true"></i>
                 </button>
             </h5>
         </div>
@@ -99,7 +104,7 @@
             <div class="card-body">
                 <div class="list-group">
                     <ng-container *ngFor="let s of species | searchFilter: searchText">
-                        <a  (click)="showResource(s)" class="list-group-item list-group-item-action">
+                        <a (click)="showResource(s)" class="list-group-item list-group-item-action">
                             {{ s.name }}
                         </a>
                     </ng-container>
@@ -112,10 +117,11 @@
     <div class="card">
         <div class="card-header" id="headingStarships">
             <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseStarships"
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseStarships"
                     aria-expanded="false" aria-controls="collapseStarships">
                     <span class="fa fa-space-shuttle"></span>
                     Starships
+                    <i class="fa right" aria-hidden="true"></i>
                 </button>
             </h5>
         </div>
@@ -137,10 +143,11 @@
     <div class="card">
         <div class="card-header" id="headingVehicles">
             <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseVehicles"
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseVehicles"
                     aria-expanded="false" aria-controls="collapseVehicles">
                     <span class="fa fa-car"></span>
                     Vehicles
+                    <i class="fa right" aria-hidden="true"></i>
                 </button>
             </h5>
         </div>

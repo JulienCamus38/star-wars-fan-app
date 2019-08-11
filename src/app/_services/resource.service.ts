@@ -11,6 +11,7 @@ import { Species } from './../_models/species';
 import { Starship } from './../_models/starship';
 import { Vehicle } from './../_models/vehicle';
 import { SwapiResponse } from './../_models/root';
+import { Router } from '@angular/router';
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -37,7 +38,7 @@ export class ResourceService {
     private starships: Observable<Starship[]>;
     private vehicles: Observable<Vehicle[]>;
 
-    constructor(private httpClient: HttpClient) {
+    constructor(private httpClient: HttpClient, private router: Router) {
         this.films = this.getDomainObjects(this.filmsUrl);
         this.people = this.getDomainObjects(this.peopleUrl);
         this.planets = this.getDomainObjects(this.planetsUrl);
@@ -239,6 +240,42 @@ export class ResourceService {
     }
 
     /**
+     * Get characters of resource
+     * @returns { Observable<People[]> }
+     */
+    public getCharactersOfResource(resource: any): Observable<People[]> {
+        return this.people.pipe(map((people: People[]) => people.filter(
+            (p: People) => {
+                return resource.characters.indexOf(p.url) > -1;
+            }
+        )));
+    }
+
+    /**
+     * Get residents of resource
+     * @returns { Observable<People[]> }
+     */
+    public getResidentsOfResource(resource: any): Observable<People[]> {
+        return this.people.pipe(map((people: People[]) => people.filter(
+            (p: People) => {
+                return resource.residents.indexOf(p.url) > -1;
+            }
+        )));
+    }
+
+    /**
+     * Get pilots of resource
+     * @returns { Observable<People[]> }
+     */
+    public getPilotsOfResource(resource: any): Observable<People[]> {
+        return this.people.pipe(map((people: People[]) => people.filter(
+            (p: People) => {
+                return resource.pilots.indexOf(p.url) > -1;
+            }
+        )));
+    }
+
+    /**
      * Get planets of resource
      * @returns { Observable<Planet[]> }
      */
@@ -246,6 +283,18 @@ export class ResourceService {
         return this.planets.pipe(map((planets: Planet[]) => planets.filter(
             (p: Planet) => {
                 return resource.planets.indexOf(p.url) > -1;
+            }
+        )));
+    }
+
+    /**
+     * Get homeworld of resource
+     * @returns { Observable<Planet[]> }
+     */
+    public getHomeworldOfResource(resource: any): Observable<Planet[]> {
+        return this.planets.pipe(map((planets: Planet[]) => planets.filter(
+            (p: Planet) => {
+                return resource.homeworld.indexOf(p.url) > -1;
             }
         )));
     }
@@ -284,6 +333,17 @@ export class ResourceService {
                 return resource.vehicles.indexOf(v.url) > -1;
             }
         )));
+    }
+
+    /**
+     * Show details of resource
+     * @param resource 
+     */
+    public showResource(resource: any) {
+        const url = resource.url.split('/');
+        const category = url[url.length - 3];
+        const id = url[url.length - 2];
+        this.router.navigate(['/details', category, id]);
     }
 
     /**

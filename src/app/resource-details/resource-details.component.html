@@ -3,9 +3,9 @@
     Go back to last page
 </button>
 
-<!--<ng-container *ngIf="resource else loading">-->
+<ng-container *ngIf="resource else loading">
     <div [ngSwitch]="resourceCategory">
-        <app-film *ngSwitchCase="'films'" [film]="resource" [characters]="people"></app-film>
+        <app-film *ngSwitchCase="'films'" [film]="resource"></app-film>
         <app-people *ngSwitchCase="'people'" [people]="resource"></app-people>
         <app-planet *ngSwitchCase="'planets'" [planet]="resource"></app-planet>
         <app-species *ngSwitchCase="'species'" [species]="resource"></app-species>
@@ -15,11 +15,11 @@
             The requested category "{{ resourceCategory }}" is not supported!
         </div>
     </div>
-<!--</ng-container>
+</ng-container>
 
 <ng-template #loading>
     <div>
         <span class="fa fa-spinner fa-1g fa-spin"></span>
         Fetching data...
     </div>
-</ng-template>-->
+</ng-template>

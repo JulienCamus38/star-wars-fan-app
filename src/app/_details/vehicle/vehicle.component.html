@@ -1,1 +1,85 @@
-<p>vehicle works!</p>
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <th>Name</th>
+            <td>{{ vehicle.name }}</td>
+        </tr>
+        <tr>
+            <th>Model</th>
+            <td>{{ vehicle.model }}</td>
+        </tr>
+        <tr>
+            <th>Passengers</th>
+            <td>{{ vehicle.passengers }} people</td>
+        </tr>
+        <tr>
+            <th>Max atmosphering speed</th>
+            <td>{{ vehicle.max_atmosphering_speed }}</td>
+        </tr>
+        <tr>
+            <th>Manufacturer</th>
+            <td>{{ vehicle.manufacturer }}</td>
+        </tr>
+        <tr>
+            <th>Vehicle class</th>
+            <td>{{ vehicle.vehicle_class }}</td>
+        </tr>
+        <tr>
+            <th>Length</th>
+            <td>{{ vehicle.length }} meters</td>
+        </tr>
+        <tr>
+            <th>Crew</th>
+            <td>{{ vehicle.crew }} people</td>
+        </tr>
+        <tr>
+            <th>Cost</th>
+            <td>{{ vehicle.cost_in_credits }} galactic credits</td>
+        </tr>
+        <tr>
+            <th>Consumables</th>
+            <td>Enough for {{ vehicle.consumables }} for the entire crew without having to resupply</td>
+        </tr>
+        <tr>
+            <th>Cargo capacity</th>
+            <td>{{ vehicle.cargo_capacity }} kilograms</td>
+        </tr>
+        <tr>
+            <th>Created</th>
+            <td>{{ vehicle.created | date : "dd/MM/y HH:mm:ss" }}</td>
+        </tr>
+        <tr>
+            <th>Edited</th>
+            <td>{{ vehicle.edited | date : "dd/MM/y HH:mm:ss" }}</td>
+        </tr>
+        <tr>
+            <th>Films</th>
+            <div class="list-group">
+                <ng-container *ngFor="let f of films | async">
+                    <td class="list-group-item-action" (click)="showResource(f)">
+                        <span class="fa fa-film"></span>
+                        {{ f.title }}
+                    </td>
+                </ng-container>
+            </div>
+        </tr>
+        <tr>
+            <th>Pilots</th>
+            <div class="list-group">
+                <ng-container *ngIf="(pilots | async)?.length; else noPilot">
+                    <ng-container *ngFor="let p of pilots | async">
+                        <td class="list-group-item-action" (click)="showResource(p)">
+                            <span class="fa fa-user"></span>
+                            {{ p.name }}
+                        </td>
+                    </ng-container>
+                </ng-container>
+                <ng-template #noPilot>
+                    <td class="font-italic">
+                        No pilot
+                    </td>
+                </ng-template>
+            </div>
+        </tr>
+    </tbody>
+</table>

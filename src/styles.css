@@ -2,5 +2,9 @@
 
 .right {
     position: absolute;
-    right: 10px;
+    right: 20px;
+}
+
+td::first-letter {
+    text-transform: capitalize;
 }

@@ -1,1 +1,73 @@
-<p>planet works!</p>
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <th>Name</th>
+            <td>{{ planet.name }}</td>
+        </tr>
+        <tr>
+            <th>Climate</th>
+            <td>{{ planet.climate }}</td>
+        </tr>
+        <tr>
+            <th>Terrain</th>
+            <td>{{ planet.terrain }}</td>
+        </tr>
+        <tr>
+            <th>Surface water</th>
+            <td>{{ planet.surface_water }} %</td>
+        </tr>
+        <tr>
+            <th>Diameter</th>
+            <td>{{ planet.diameter }} meters</td>
+        </tr>
+        <tr>
+            <th>Gravity</th>
+            <td>{{ planet.gravity }} G</td>
+        </tr>
+        <tr>
+            <th>Orbital period</th>
+            <td>{{ planet.orbital_period }} days</td>
+        </tr>
+        <tr>
+            <th>Rotation period</th>
+            <td>{{ planet.rotation_period }} days</td>
+        </tr>
+        <tr>
+            <th>Created</th>
+            <td>{{ planet.created | date : "dd/MM/y HH:mm:ss" }}</td>
+        </tr>
+        <tr>
+            <th>Edited</th>
+            <td>{{ planet.edited | date : "dd/MM/y HH:mm:ss" }}</td>
+        </tr>
+        <tr>
+            <th>Films</th>
+            <div class="list-group">
+                <ng-container *ngFor="let f of films | async">
+                    <td class="list-group-item-action" (click)="showResource(f)">
+                        <span class="fa fa-film"></span>
+                        {{ f.title }}
+                    </td>
+                </ng-container>
+            </div>
+        </tr>
+        <tr>
+            <th>Residents</th>
+            <div class="list-group">
+                <ng-container *ngIf="(residents | async)?.length; else noResident">
+                    <ng-container *ngFor="let r of residents | async">
+                        <td class="list-group-item-action" (click)="showResource(r)">
+                            <span class="fa fa-user"></span>
+                            {{ r.name }}
+                        </td>
+                    </ng-container>
+                </ng-container>
+                <ng-template #noResident>
+                    <td class="font-italic">
+                        No resident
+                    </td>
+                </ng-template>
+            </div>
+        </tr>
+    </tbody>
+</table>
