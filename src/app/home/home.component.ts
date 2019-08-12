@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
         this.userService.delete(id)
             .pipe(first())
             .subscribe(() => this.loadAllUsers());
+        this.authenticationService.logout();
         this.router.navigate(['/login']);
     }
 
