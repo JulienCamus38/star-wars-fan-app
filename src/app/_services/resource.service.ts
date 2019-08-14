@@ -138,6 +138,7 @@ export class ResourceService {
             case 'species': return this.getOneSpecies(id);
             case 'starships': return this.getStarship(id);
             case 'vehicles': return this.getVehicle(id);
+            default: return null;
         }
     }
 

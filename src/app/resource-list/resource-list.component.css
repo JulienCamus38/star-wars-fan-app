@@ -21,3 +21,7 @@
 [data-toggle="collapse"].collapsed .right.fa:before {
     content: "\f054"; /* > */
 }
+
+.fa {
+    margin-right: 10px;
+}

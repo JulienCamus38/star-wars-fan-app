@@ -22,25 +22,31 @@ export class ResourceDetailsComponent implements OnInit {
                 this.resourceId = +params.get('id');
                 this.resourceCategory = params.get('category');
                 if (this.resourceId) {
-                    this.resourceService.getResource(this.resourceCategory, this.resourceId).subscribe(resource => {
+                    this.resourceService
+                    .getResource(this.resourceCategory, this.resourceId)
+                    .subscribe(resource => {
                         if (resource == null) {
                             this.noResourceFound();
                         } else {
                             this.resource = resource;
                         }
                     },
-                        error => { // TODO: does not work yet
+                    error => {
                             alert('Error when fetching resource details');
-                            this.router.navigate['/list'];
+                            this.router.navigate(['/list']);
                         });
                 }
+                else {
+                    // Manage if resourceId is NaN
+                    this.noResourceFound();
+                }
             }
-        )
+        );
     }
 
     private noResourceFound() {
-        alert('Oops, incorrect character link');
-        this.router.navigate['/list'];
+        alert('Oops, incorrect resource link');
+        this.router.navigate(['/list']);
     }
 
 }

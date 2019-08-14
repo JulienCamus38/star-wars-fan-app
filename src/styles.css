@@ -1,5 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
+@font-face {
+    font-family: sw-font;
+    src: url("./assets/fonts/Starjedi.ttf");
+}
+
+.sw-font {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'sw-font', 'arial', sans-serif;
+}
+
 .right {
     position: absolute;
     right: 20px;
@@ -7,4 +19,20 @@
 
 td::first-letter {
     text-transform: capitalize;
+}
+
+.jumbotron {
+    background-image: url('./assets/images/sw-background-grey2-small.jpg');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-attachment: scroll;
+}
+
+body {
+    background-color: #e9ecef;
+    padding-bottom: 70px;
+}
+
+footer {
+    margin-bottom: 1em;
 }

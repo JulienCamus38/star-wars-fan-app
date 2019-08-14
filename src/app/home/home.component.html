@@ -1,10 +1,26 @@
-<h1>Hi {{ currentUser.firstName }}!</h1>
-<h3>All registered users:</h3>
+<h1 class="sw-font" style="margin-bottom: 1cm">Hi {{ currentUser.firstName }}!</h1>
+<h3>Meet your Star Wars fellows:</h3>
 <ul>
     <li *ngFor="let user of users">
-        {{ user.username }} ({{ user.firstName }} {{ user.lastName }})
+        <span class="sw-font">
+            {{ user.username }}
+        </span>
+        ({{ user.firstName }} {{ user.lastName }})
         <span *ngIf="user.id==currentUser.id">
-        - <a (click)="deleteUser(user.id)" class="text-danger">Delete my account</a>
+            - <a (click)="deleteUser(user.id)" class="text-danger">Delete my account</a>
         </span>
     </li>
 </ul>
+
+<!-- credits -->
+<footer class="text-center fixed-bottom">
+    <p>
+        &copy; Copyright 2019 - <a href="mailto:camusjulien40@gmail.com">Julien CAMUS</a>
+    </p>
+    <a class="fa fa-linkedin-square fa-2x" href="http://linkedin.com/in/camusj" style="margin-right: 20px;">
+    </a>
+    <a class="fab fa-github fa-2x" href="https://github.com/JulienCamus38" style="margin-right: 20px;">
+    </a>
+    <a class="fab fa-hackerrank fa-2x" href="https://www.hackerrank.com/julien_camus">
+    </a>
+</footer>
