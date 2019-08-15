@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { ResourceService } from './../_services/resource.service';
+import { ResourceService, AlertService } from '../_services';
 
 @Component({
     selector: 'app-resource-details',
@@ -14,7 +14,7 @@ export class ResourceDetailsComponent implements OnInit {
     resourceCategory: string;
     resource: any;
 
-    constructor(private route: ActivatedRoute, private resourceService: ResourceService, private router: Router) { }
+    constructor(private route: ActivatedRoute, private resourceService: ResourceService, private alertService: AlertService, private router: Router) { }
 
     ngOnInit() {
         this.route.paramMap.subscribe(
@@ -32,8 +32,8 @@ export class ResourceDetailsComponent implements OnInit {
                         }
                     },
                     error => {
-                            alert('Error when fetching resource details');
                             this.router.navigate(['/list']);
+                            this.alertService.tempError('Error when fetching resource details', false, 3000);
                         });
                 }
                 else {
@@ -45,8 +45,8 @@ export class ResourceDetailsComponent implements OnInit {
     }
 
     private noResourceFound() {
-        alert('Oops, incorrect resource link');
         this.router.navigate(['/list']);
+        this.alertService.tempError('Oops, incorrect resource link', false, 3000);
     }
 
 }

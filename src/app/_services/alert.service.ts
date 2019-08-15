@@ -40,4 +40,11 @@ export class AlertService {
         // clear by calling subject.next() without parameters
         this.subject.next();
     }
+
+    tempError(message: string, keepAfterRouteChange = false, duration: number) {
+        this.error(message, keepAfterRouteChange);
+        setTimeout(() => {
+            this.clear();
+        }, duration);
+    }
 }
