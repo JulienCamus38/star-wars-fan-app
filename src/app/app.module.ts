@@ -57,6 +57,8 @@ import { VehicleComponent } from './_details/vehicle/vehicle.component';
         // provider used to create fake backend
         fakeBackendProvider
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule { };

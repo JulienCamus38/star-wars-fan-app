@@ -5,8 +5,7 @@ import { ResourceService, AlertService } from '../_services';
 
 @Component({
     selector: 'app-resource-details',
-    templateUrl: './resource-details.component.html',
-    styleUrls: ['./resource-details.component.css']
+    templateUrl: './resource-details.component.html'
 })
 export class ResourceDetailsComponent implements OnInit {
 
@@ -33,7 +32,7 @@ export class ResourceDetailsComponent implements OnInit {
                     },
                     error => {
                             this.router.navigate(['/list']);
-                            this.alertService.tempError('Error when fetching resource details', false, 3000);
+                            this.alertService.error('Error when fetching resource details');
                         });
                 }
                 else {
@@ -46,7 +45,7 @@ export class ResourceDetailsComponent implements OnInit {
 
     private noResourceFound() {
         this.router.navigate(['/list']);
-        this.alertService.tempError('Oops, incorrect resource link', false, 3000);
+        this.alertService.error('Oops, incorrect resource link');
     }
 
 }

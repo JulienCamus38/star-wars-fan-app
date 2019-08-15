@@ -19,7 +19,9 @@
         </tr>
         <tr>
             <th>Birth year</th>
-            <td>{{ people.birth_year }}</td> <!-- TODO: translate -->
+            <td title="BBY (Before the Battle of Yavin)&#13;ABY (After the Battle of Yavin)">
+                {{ people.birth_year }}
+            </td>
         </tr>
         <tr>
             <th>Height</th>
@@ -119,8 +121,8 @@
 </table>
 
 <ng-template #loading>
-        <td>
-            <span class="fa fa-spinner fa-1g fa-spin"></span>
-            Fetching data...
-        </td>
-    </ng-template>
+    <td>
+        <span class="fa fa-spinner fa-1g fa-spin"></span>
+        Fetching data...
+    </td>
+</ng-template>
