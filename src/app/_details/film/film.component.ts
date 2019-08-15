@@ -24,7 +24,7 @@ export class FilmComponent implements OnInit {
     species: Observable<Species[]>;
     starships: Observable<Starship[]>;
     vehicles: Observable<Vehicle[]>;
-
+    
     constructor(private resourceService: ResourceService) {
     }
 

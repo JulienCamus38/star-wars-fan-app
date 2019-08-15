@@ -54,12 +54,12 @@ export class ResourceService {
     */
     private getDomainObjects<T>(url: string): Observable<T[]> {
         return this.getApiPage<T>(url)
-        .pipe(
-            publishReplay(1)
-        )
-        .pipe(
-            refCount()
-        );
+            .pipe(
+                publishReplay(1)
+            )
+            .pipe(
+                refCount()
+            );
     }
 
     /**
@@ -69,23 +69,30 @@ export class ResourceService {
      */
     private getApiPage<T>(url: string): Observable<T[]> {
         return this.httpClient.get<SwapiResponse<T>>(url, httpOptions)
-            .pipe(concatMap((response: any) => {
-                if (response.next) {
-                    return this.getApiPage(response.next).pipe(map(resultsToJoin => [...response.results, ...resultsToJoin])).pipe(map(data => {
-                        data.sort((a,b) => {
-                            return (a.title < b.title || a.name < b.name) ? -1 : 1;
-                        });
-                        return data;
-                    }));
-                } else {
-                    return of(response.results).pipe(map(data => {
-                        data.sort((a,b) => {
-                            return (a.title < b.title || a.name < b.name) ? -1 : 1;
-                        });
-                        return data;
-                    }));
-                }
-            }), catchError(this.handleError));
+            .pipe(
+                concatMap((response: any) => {
+                    if (response.next) {
+                        return this.getApiPage(response.next)
+                            .pipe(
+                                map(resultsToJoin => [...response.results, ...resultsToJoin]))
+                            .pipe(
+                                map(data => {
+                                    data.sort((a, b) => {
+                                        return (a.title < b.title || a.name < b.name) ? -1 : 1;
+                                    });
+                                    return data;
+                                }));
+                    } else {
+                        return of(response.results)
+                            .pipe(
+                                map(data => {
+                                    data.sort((a, b) => {
+                                        return (a.title < b.title || a.name < b.name) ? -1 : 1;
+                                    });
+                                    return data;
+                                }));
+                    }
+                }), catchError(this.handleError));
     }
 
     /**

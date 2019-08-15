@@ -55,23 +55,27 @@
         <tr>
             <th>Films</th>
             <div class="list-group">
-                <ng-container *ngFor="let f of films | async">
-                    <td class="list-group-item-action" (click)="showResource(f)">
-                        <span class="fa fa-film"></span>
-                        {{ f.title }}
-                    </td>
+                <ng-container *ngIf="(films | async) else loading">
+                    <ng-container *ngFor="let f of films | async">
+                        <td class="list-group-item-action" (click)="showResource(f)">
+                            <span class="fa fa-film"></span>
+                            {{ f.title }}
+                        </td>
+                    </ng-container>
                 </ng-container>
             </div>
         </tr>
         <tr>
             <th>Pilots</th>
             <div class="list-group">
-                <ng-container *ngIf="(pilots | async)?.length; else noPilot">
-                    <ng-container *ngFor="let p of pilots | async">
-                        <td class="list-group-item-action" (click)="showResource(p)">
-                            <span class="fa fa-user"></span>
-                            {{ p.name }}
-                        </td>
+                <ng-container *ngIf="(pilots | async) else loading">
+                    <ng-container *ngIf="(pilots | async)?.length; else noPilot">
+                        <ng-container *ngFor="let p of pilots | async">
+                            <td class="list-group-item-action" (click)="showResource(p)">
+                                <span class="fa fa-user"></span>
+                                {{ p.name }}
+                            </td>
+                        </ng-container>
                     </ng-container>
                 </ng-container>
                 <ng-template #noPilot>
@@ -83,3 +87,10 @@
         </tr>
     </tbody>
 </table>
+
+<ng-template #loading>
+    <td>
+        <span class="fa fa-spinner fa-1g fa-spin"></span>
+        Fetching data...
+    </td>
+</ng-template>

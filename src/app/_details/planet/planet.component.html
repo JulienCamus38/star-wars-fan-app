@@ -43,23 +43,27 @@
         <tr>
             <th>Films</th>
             <div class="list-group">
-                <ng-container *ngFor="let f of films | async">
-                    <td class="list-group-item-action" (click)="showResource(f)">
-                        <span class="fa fa-film"></span>
-                        {{ f.title }}
-                    </td>
+                <ng-container *ngIf="(films | async) else loading">
+                    <ng-container *ngFor="let f of films | async">
+                        <td class="list-group-item-action" (click)="showResource(f)">
+                            <span class="fa fa-film"></span>
+                            {{ f.title }}
+                        </td>
+                    </ng-container>
                 </ng-container>
             </div>
         </tr>
         <tr>
             <th>Residents</th>
             <div class="list-group">
-                <ng-container *ngIf="(residents | async)?.length; else noResident">
-                    <ng-container *ngFor="let r of residents | async">
-                        <td class="list-group-item-action" (click)="showResource(r)">
-                            <span class="fa fa-user"></span>
-                            {{ r.name }}
-                        </td>
+                <ng-container *ngIf="(residents | async) else loading">
+                    <ng-container *ngIf="(residents | async)?.length; else noResident">
+                        <ng-container *ngFor="let r of residents | async">
+                            <td class="list-group-item-action" (click)="showResource(r)">
+                                <span class="fa fa-user"></span>
+                                {{ r.name }}
+                            </td>
+                        </ng-container>
                     </ng-container>
                 </ng-container>
                 <ng-template #noResident>
@@ -71,3 +75,10 @@
         </tr>
     </tbody>
 </table>
+
+<ng-template #loading>
+    <td>
+        <span class="fa fa-spinner fa-1g fa-spin"></span>
+        Fetching data...
+    </td>
+</ng-template>

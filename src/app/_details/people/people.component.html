@@ -7,11 +7,13 @@
         <tr>
             <th>Homeworld</th>
             <div class="list-group">
-                <ng-container *ngFor="let h of homeworld | async">
-                    <td class="list-group-item-action" (click)="showResource(h)">
-                        <span class="fa fa-globe"></span>
-                        {{ h.name }}
-                    </td>
+                <ng-container *ngIf="(homeworld | async) else loading">
+                    <ng-container *ngFor="let h of homeworld | async">
+                        <td class="list-group-item-action" (click)="showResource(h)">
+                            <span class="fa fa-globe"></span>
+                            {{ h.name }}
+                        </td>
+                    </ng-container>
                 </ng-container>
             </div>
         </tr>
@@ -50,34 +52,40 @@
         <tr>
             <th>Films</th>
             <div class="list-group">
-                <ng-container *ngFor="let f of films | async">
-                    <td class="list-group-item-action" (click)="showResource(f)">
-                        <span class="fa fa-film"></span>
-                        {{ f.title }}
-                    </td>
+                <ng-container *ngIf="(films | async) else loading">
+                    <ng-container *ngFor="let f of films | async">
+                        <td class="list-group-item-action" (click)="showResource(f)">
+                            <span class="fa fa-film"></span>
+                            {{ f.title }}
+                        </td>
+                    </ng-container>
                 </ng-container>
             </div>
         </tr>
         <tr>
             <th>Species</th>
             <div class="list-group">
-                <ng-container *ngFor="let s of species | async">
-                    <td class="list-group-item-action" (click)="showResource(s)">
-                        <span class="fa fa-reddit"></span>
-                        {{ s.name }}
-                    </td>
+                <ng-container *ngIf="(species | async) else loading">
+                    <ng-container *ngFor="let s of species | async">
+                        <td class="list-group-item-action" (click)="showResource(s)">
+                            <span class="fa fa-reddit"></span>
+                            {{ s.name }}
+                        </td>
+                    </ng-container>
                 </ng-container>
             </div>
         </tr>
         <tr>
             <th>Starships</th>
             <div class="list-group">
-                <ng-container *ngIf="(starships | async)?.length; else noStarship">
-                    <ng-container *ngFor="let s of starships | async">
-                        <td class="list-group-item-action" (click)="showResource(s)">
-                            <span class="fa fa-space-shuttle"></span>
-                            {{ s.name }}
-                        </td>
+                <ng-container *ngIf="(starships | async) else loading">
+                    <ng-container *ngIf="(starships | async)?.length; else noStarship">
+                        <ng-container *ngFor="let s of starships | async">
+                            <td class="list-group-item-action" (click)="showResource(s)">
+                                <span class="fa fa-space-shuttle"></span>
+                                {{ s.name }}
+                            </td>
+                        </ng-container>
                     </ng-container>
                 </ng-container>
                 <ng-template #noStarship>
@@ -90,12 +98,14 @@
         <tr>
             <th>Vehicles</th>
             <div class="list-group">
-                <ng-container *ngIf="(vehicles | async)?.length; else noVehicle">
-                    <ng-container *ngFor="let v of vehicles | async">
-                        <td class="list-group-item-action" (click)="showResource(v)">
-                            <span class="fa fa-car"></span>
-                            {{ v.name }}
-                        </td>
+                <ng-container *ngIf="(vehicles | async) else loading">
+                    <ng-container *ngIf="(vehicles | async)?.length; else noVehicle">
+                        <ng-container *ngFor="let v of vehicles | async">
+                            <td class="list-group-item-action" (click)="showResource(v)">
+                                <span class="fa fa-car"></span>
+                                {{ v.name }}
+                            </td>
+                        </ng-container>
                     </ng-container>
                 </ng-container>
                 <ng-template #noVehicle>
@@ -107,3 +117,10 @@
         </tr>
     </tbody>
 </table>
+
+<ng-template #loading>
+        <td>
+            <span class="fa fa-spinner fa-1g fa-spin"></span>
+            Fetching data...
+        </td>
+    </ng-template>
